@@ -28,4 +28,6 @@ export default (Sequelize, DataType) => {
         timestamps: true,
         tableName: 'permissions'
     })
+
+    return Permission;
 }

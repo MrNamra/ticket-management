@@ -64,5 +64,5 @@ export default (Sequelize, DataType) => {
     tableName: 'events'
   })
 
-  return Event
+  return Event;
 }
