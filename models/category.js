@@ -35,5 +35,5 @@ export default (Sequelize, DataType) => {
         tableName: 'categories'
     });
 
-    return Category
+    return Category;
 }
