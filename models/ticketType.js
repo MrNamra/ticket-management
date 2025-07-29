@@ -1,52 +1,52 @@
-export default (sequelize, DataTypes) => {
+module.exports =(sequelize, DataTypes) => {
     const TicketType = sequelize.define('ticket_types', {
         id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
             allowNull: false
         },
         event_id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'events',
                 key: 'id',
             },
-            onUpdate: Sequelize.literal('CASCADE'),
-            onDelete: Sequelize.literal('CASCADE')
+            onUpdate: 'CASCADE',
+            onDelete: 'CASCADE'
         },
         name: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         description: {
-            type: Sequelize.TEXT,
+            type: DataTypes.TEXT,
             allowNull: true,
         },
         price: {
-            type: Sequelize.DOUBLE,
+            type: DataTypes.DOUBLE,
             allowNull: false,
         },
         entry_count: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: true,
             defaultValue: 1
         },
         created_at: {
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+            defaultValue: DataTypes.NOW
         },
         updated_at: {
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+            defaultValue: DataTypes.NOW
         }
     }, {
         timestamps: true,
         tableName: 'ticket_types'
     })
 
-    return TicketTypes;
+    return TicketType;
 }

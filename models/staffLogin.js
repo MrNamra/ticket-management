@@ -1,12 +1,12 @@
-export default (sequelize, DataTypes) => {
+module.exports =(sequelize, DataTypes) => {
     const StaffLogin = sequelize.define('staff_login', {
-      id: {
-        type: Sequelize.UUID,
+      uuid: {
+        type: DataTypes.UUID,
         primaryKey: true,
         allowNull: false
       },
       staff_id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'staff',
@@ -16,14 +16,14 @@ export default (sequelize, DataTypes) => {
         onDelete: 'CASCADE'
       },
       created_at: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        defaultValue: DataTypes.NOW
       },
       updated_at: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        defaultValue: DataTypes.NOW
       }
     }, { 
         timestamps: true,

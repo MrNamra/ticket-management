@@ -1,12 +1,12 @@
-export default (sequelize, DataTypes) => {
+module.exports =(sequelize, DataTypes) => {
     const Staff = sequelize.define('staff', {
         id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },
         admin_id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'admins',
@@ -16,31 +16,31 @@ export default (sequelize, DataTypes) => {
             onDelete: 'CASCADE'
         },
         name: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         email: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             unique: true
         },
         password: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         phone: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: true
         },
         created_at: {
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+            defaultValue: DataTypes.NOW
         },
         updated_at: {
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+            defaultValue: DataTypes.NOW
         }
     }, {
         tableName: 'staff',

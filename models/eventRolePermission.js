@@ -1,13 +1,13 @@
-export default (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
     const RolePermission = sequelize.define('event_role_permissions', {
         id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false,
           },
           event_role_id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             references: {
               model: 'event_roles',
@@ -15,7 +15,7 @@ export default (sequelize, DataTypes) => {
             },
           },
           permission_id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             references: {
               model: 'permissions',
@@ -23,14 +23,14 @@ export default (sequelize, DataTypes) => {
             },
           },
           created_at: {
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+            defaultValue: DataTypes.NOW
           },
           updated_at: {
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+            defaultValue: DataTypes.NOW
           }
     }, {
         timestamps: true,

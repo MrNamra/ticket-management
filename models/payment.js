@@ -1,50 +1,50 @@
-export default (sequelize, DataTypes) => {
+module.exports =(sequelize, DataTypes) => {
     const Payment = sequelize.define('payments', {
         id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false,
         },
         event_id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'events',
                 key: 'id'
             },
-            onUpdate: Sequelize.literal('CASCADE'),
-            onDelete: Sequelize.literal('CASCADE')
+            onUpdate: 'CASCADE',
+            onDelete: 'CASCADE'
         },
         email: {
-            type: Sequelize.email,
+            type: DataTypes.STRING(255),
             allowNull: true
         },
         name: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: true
         },
         phone: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: true
         },
         payment_type: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         trangaction_id: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         created_at: {
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+            defaultValue: DataTypes.NOW
         },
         updated_at: {
-            type: Sequelize.DATE,
+            type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+            defaultValue: DataTypes.NOW
         }
     }, {
         timestamps: true,

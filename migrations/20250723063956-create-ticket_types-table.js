@@ -5,47 +5,47 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable('ticket_types', { 
       id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false
       },
       event_id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'events',
           key: 'id',
         },
-        onUpdate: Sequelize.literal('CASCADE'),
-        onDelete: Sequelize.literal('CASCADE')
+        onUpdate: sequelize.literal('CASCADE'),
+        onDelete: sequelize.literal('CASCADE')
       },
       name: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       description: {
-        type: Sequelize.TEXT,
+        type: DataTypes.TEXT,
         allowNull: true,
       },
       price: {
-        type: Sequelize.DOUBLE,
+        type: DataTypes.DOUBLE,
         allowNull: false,
       },
       entry_count: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: true,
         defaultValue: 1
       },
       created_at: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        defaultValue: DataTypes.NOW
       },
       updated_at: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        defaultValue: DataTypes.NOW
       }
     });
   },

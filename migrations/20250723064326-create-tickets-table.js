@@ -5,56 +5,58 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable('tickets', {
       id: { 
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
       },
       ticket_type_id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'ticket_types',
           key: 'id'
         },
-        onUpdate: Sequelize.literal('CASCADE'),
-        onDelete: Sequelize.literal('CASCADE')
+        onUpdate: sequelize.literal('CASCADE'),
+        onDelete: sequelize.literal('CASCADE')
       },
       sell_by: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       status: {
-        type: Sequelize.TINYINT,
+        type: DataTypes.TINYINT,
         allowNull: false,
         defaultValue: 1
       },
       entry_count: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         defaultValue: 0,
         allowNull: false
       },
       wallet_url: {
-        type: Sequelize.TEXT,
+        type: DataTypes.TEXT,
         allowNull: false
       },
       paymnet_id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'paymnets',
+          model: 'payments',
           key: 'id'
-        }
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       created_at: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        defaultValue: DataTypes.NOW
       },
       updated_at: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        defaultValue: DataTypes.NOW
       }
     });
   },

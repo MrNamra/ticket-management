@@ -1,13 +1,13 @@
-export default (Sequelize, DataType) => {
-  const Event = Sequelize.define('events', {
+module.exports = (sequelize, DataTypes) => {
+  const Event = sequelize.define('events', {
     id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false
     },
     admin_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'admins',
@@ -17,7 +17,7 @@ export default (Sequelize, DataType) => {
       onDelete: 'CASCADE'
     },
     category_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'categories',
@@ -27,37 +27,37 @@ export default (Sequelize, DataType) => {
       onDelete: 'CASCADE'
     },
     name: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     description: {
-      type: Sequelize.TEXT
+      type: DataTypes.TEXT
     },
     image: {
-      type: Sequelize.TEXT,
+      type: DataTypes.TEXT,
       allowNull: true
     },
     start_date: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     end_date: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     location: {
-      type: Sequelize.TEXT,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     created_at: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+      defaultValue: DataTypes.NOW
     },
     updated_at: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+      defaultValue: DataTypes.NOW
     }
   }, {
     timestamp: true,

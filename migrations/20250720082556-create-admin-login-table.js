@@ -5,12 +5,12 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('admin_login', {
       uuid: {
-        type: Sequelize.UUID,
+        type: DataTypes.UUID,
         primaryKey: true,
         allowNull: false
       },
       admin_id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'admins',
@@ -20,14 +20,14 @@ module.exports = {
         onDelete: 'CASCADE'
       },
       created_at: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        defaultValue: DataTypes.NOW
       },
       updated_at: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        defaultValue: DataTypes.NOW
       }
     });
   },
