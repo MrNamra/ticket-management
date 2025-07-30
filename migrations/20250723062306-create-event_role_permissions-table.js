@@ -5,13 +5,13 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('event_role_permissions', {
       id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
       event_role_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'event_roles',
@@ -19,7 +19,7 @@ module.exports = {
         },
       },
       permission_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'permissions',
@@ -27,14 +27,14 @@ module.exports = {
         },
       },
       created_at: {
-        type: DataTypes.DATE,
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
-        defaultValue: DataTypes.NOW
+        defaultValue: Sequelize.DataTypes.NOW
       },
       updated_at: {
-        type: DataTypes.DATE,
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
-        defaultValue: DataTypes.NOW
+        defaultValue: Sequelize.DataTypes.NOW
       }
     });
   },

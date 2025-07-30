@@ -5,28 +5,28 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('permissions', {
       id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
       },
       name: {
-        type: DataTypes.STRING,
+        type: Sequelize.DataTypes.STRING,
         allowNull: false,
       },
       description: {
-        type: DataTypes.TEXT,
+        type: Sequelize.DataTypes.TEXT,
         allowNull: true
       },
       created_at: {
-        type: DataTypes.DATE,
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
-        defaultValue: DataTypes.NOW
+        defaultValue: Sequelize.DataTypes.NOW
       },
       updated_at: {
-        type: DataTypes.DATE,
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
-        defaultValue: DataTypes.NOW
+        defaultValue: Sequelize.DataTypes.NOW
       }
     });
   },

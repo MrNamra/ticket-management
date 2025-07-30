@@ -5,13 +5,13 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('categories', {
       id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
       },
       admin_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'admins',
@@ -21,18 +21,18 @@ module.exports = {
         onDelete: 'CASCADE'
       },
       name: {
-        type: DataTypes.STRING,
+        type: Sequelize.DataTypes.STRING,
         allowNull: false
       },
       created_at: {
-        type: DataTypes.DATE,
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
-        defaultValue: DataTypes.NOW
+        defaultValue: Sequelize.DataTypes.NOW
       },
       updated_at: {
-        type: DataTypes.DATE,
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
-        defaultValue: DataTypes.NOW
+        defaultValue: Sequelize.DataTypes.NOW
       }
     });
   },

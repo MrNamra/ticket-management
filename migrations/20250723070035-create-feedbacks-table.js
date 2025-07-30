@@ -5,50 +5,50 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('feedbacks', {
       id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
       event_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'events',
           key: 'id'
         },
-        onUpdate: sequelize.literal('CASCADE'),
-        onDelete: sequelize.literal('CASCADE')
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       email: {
-        type: DataTypes.email,
+        type: Sequelize.DataTypes.STRING,
         allowNull: true
       },
       name: {
-        type: DataTypes.STRING,
+        type: Sequelize.DataTypes.STRING,
         allowNull: true
       },
       phone: {
-        type: DataTypes.STRING,
+        type: Sequelize.DataTypes.STRING,
         allowNull: true
       },
       stars: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         allowNull: false
       },
       review: {
-        type: DataTypes.TEXT,
+        type: Sequelize.DataTypes.TEXT,
         allowNull: true
       },
       created_at: {
-        type: DataTypes.DATE,
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
-        defaultValue: DataTypes.NOW
+        defaultValue: Sequelize.DataTypes.NOW
       },
       updated_at: {
-        type: DataTypes.DATE,
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
-        defaultValue: DataTypes.NOW
+        defaultValue: Sequelize.DataTypes.NOW
       }
     });
   },

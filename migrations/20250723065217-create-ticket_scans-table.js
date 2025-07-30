@@ -5,13 +5,13 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable('ticket_scans', {
       id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
       ticket_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'tickets',
@@ -21,28 +21,28 @@ module.exports = {
         onDelete: 'CASCADE'
       },
       scan_by: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'staff',
           key: 'id'
         },
-        onUpdate: sequelize.literal('CASCADE'),
-        onDelete: sequelize.literal('CASCADE')
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       notes: {
-        type: DataTypes.STRING,
+        type: Sequelize.DataTypes.STRING,
         allowNull: true
       },
       created_at: {
-        type: DataTypes.DATE,
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
-        defaultValue: DataTypes.NOW
+        defaultValue: Sequelize.DataTypes.NOW
       },
       updated_at: {
-        type: DataTypes.DATE,
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
-        defaultValue: DataTypes.NOW
+        defaultValue: Sequelize.DataTypes.NOW
       }
     });
   },

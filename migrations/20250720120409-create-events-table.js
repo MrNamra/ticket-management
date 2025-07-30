@@ -5,13 +5,13 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('events', {
       id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
       },
       admin_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'admins',
@@ -21,7 +21,7 @@ module.exports = {
         onDelete: 'CASCADE'
       },
       category_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'categories',
@@ -31,37 +31,37 @@ module.exports = {
         onDelete: 'CASCADE'
       },
       name: {
-        type: DataTypes.STRING,
+        type: Sequelize.DataTypes.STRING,
         allowNull: false
       },
       description: {
-        type: DataTypes.TEXT
+        type: Sequelize.DataTypes.TEXT
       },
       image: {
-        type: DataTypes.TEXT,
+        type: Sequelize.DataTypes.TEXT,
         allowNull: true
       },
       start_date: {
-        type: DataTypes.DATE,
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
       },
       end_date: {
-        type: DataTypes.DATE,
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
       },
       location: {
-        type: DataTypes.TEXT,
+        type: Sequelize.DataTypes.TEXT,
         allowNull: false
       },
       created_at: {
-        type: DataTypes.DATE,
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
-        defaultValue: DataTypes.NOW
+        defaultValue: Sequelize.DataTypes.NOW
       },
       updated_at: {
-        type: DataTypes.DATE,
+        type: Sequelize.DataTypes.DATE,
         allowNull: false,
-        defaultValue: DataTypes.NOW
+        defaultValue: Sequelize.DataTypes.NOW
       }
     });
   },
